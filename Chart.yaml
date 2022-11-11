@@ -23,9 +23,9 @@ version: 0.1.0
 # It is recommended to use it with quotes.
 appVersion: "1.6.0"
 
-spec:
-  project: helmtest
+# spec:
+#   project: helmtest
 
-  source:
-    repoURL: https://github.com/MinsuLim/helmchart.git
-    targetRevision: main
+#   source:
+#     repoURL: https://github.com/MinsuLim/helmchart.git
+#     targetRevision: main
