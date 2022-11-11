@@ -22,3 +22,10 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.6.0"
+
+spec:
+  project: helmtest
+
+  source:
+    repoURL: https://github.com/MinsuLim/helmchart.git
+    targetRevision: main
