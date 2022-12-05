@@ -5,10 +5,10 @@
 replicaCount: 2
 
 image:
-  repository: limixx/jhooq-k8s-springboot #rahulwagh17/kubernetes:jhooq-k8s-springboot
+  repository: 056231226580.dkr.ecr.ap-northeast-2.amazonaws.com/neo/spring #limixx/jhooq-k8s-springboot #rahulwagh17/kubernetes:jhooq-k8s-springboot
   pullPolicy: IfNotPresent
   # Ove''rrides the image tag whose default is the chart appVersion.
-  tag: latest
+  tag: 0.1
 
 imagePullSecrets: []
 nameOverride: ""
