@@ -1,4 +1,4 @@
-def GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
+GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
 
 pipeline {
  
