@@ -24,8 +24,8 @@ pipeline {
     //deploy stage 시작
     stage("deploy"){
      steps {
-            git credentialsId: 'github-neo-gmail',
-                url: 'https://github.com/MinsuLim/helmchart.git',
+            git credentialsId: 'neo-github',
+                url: 'git@github.com:MinsuLim/helmchart.git',
                 branch: 'main'
 
       //ssh -oStrictHostKeyChecking=no github.com
