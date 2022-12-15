@@ -35,7 +35,7 @@ pipeline {
               '''
             sshagent(credentials: ['neo-github']) {
                 sh "git remote set-url origin git@github.com:MinsuLim/helmchart.git"
-                sh "git push -u origin master"
+                sh "git push -u origin main"
              }
         }
         post {
@@ -58,7 +58,7 @@ pipeline {
 //                 yq e -i '.image_name="test"' values.yaml
 //                 git add .'
 //                 git commit -am "helm update"'
-//                 git push origin master
+//                 git push origin main
 //                 '''
 //            }
 //         }
