@@ -38,13 +38,16 @@ pipeline {
       
       //sh "git remote set-url origin git@github.com:MinsuLim/helmchart.git"
       //sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
+      
+      // deleted
+      //sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
+//                 sh " "
+//                 sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
+//                 sh " "
                 
+      
             sshagent(credentials: ['neo-github']) {
                 sh "ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts"
-                sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
-                sh " "
-                sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
-                sh " "
                 sh "git push -u origin main"
              }
         }
