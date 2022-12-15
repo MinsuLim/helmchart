@@ -1,7 +1,7 @@
-GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
-
 pipeline {
- 
+
+ def GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
+
   agent { node { label 'ecs-agent-fargate' } } 
   stages { 
 
