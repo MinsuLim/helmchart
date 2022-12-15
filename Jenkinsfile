@@ -5,27 +5,42 @@ pipeline {
 
     //init stage 시작
     stage("init"){
-      sh "echo init"
+     steps {
+        script {
+          sh "echo init"
+        }
+     }
     }
 
     //build stage 시작
     stage("build"){
-      sh "echo 'start build' "
+     steps {
+        script {
+          sh "echo build"
+        }
+     }
     }
  
     //deploy stage 시작
     stage("deploy"){
-      sh "echo 'start deploy' "
+     steps {
+        script {
+           sh "echo 'start deploy' "
+        
+           withCredentials([gitUsernamePassword(credentialsId: 'neo-github', gitToolName: 'git-tool')]) {
+              sh '''
+                git clone 
+                yq e -i '.image_name="test"' value.yaml
+                git add .'
+                git commit -am "helm update"'
+                git push origin master
+                '''
+           }
+        }
+     }
 
-      withCredentials([gitUsernamePassword(credentialsId: 'neo-github', gitToolName: 'git-tool')]) {
-        sh '''
-          git clone 
-          yq e -i '.image_name="test"' value.yaml
-          git add .'
-          git commit -am "helm update"'
-          git push origin master
-        '''
-      }
+
+
     }
  }
 }
