@@ -29,6 +29,7 @@ pipeline {
                 branch: 'main'
 
               sh '''  
+                ssh -oStrictHostKeyChecking=no host
                 yq e -i '.image_name="test"' values.yaml
                 git add .
                 git commit -am "helm update"
@@ -50,6 +51,7 @@ pipeline {
 //      steps {
 //         script {
 //            sh "echo 'start deploy' "
+     
         
 //            withCredentials([sshUserPrivateKey(credentialsId: 'neo-github', keyFileVariable: 'keyfile')]) {
 //               sh "git clone https://github.com/MinsuLim/helmchart.git"
