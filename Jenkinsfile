@@ -40,6 +40,8 @@ pipeline {
       //sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
                 
             sshagent(credentials: ['neo-github']) {
+                sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
+                sh " "
                 sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
                 sh " "
                 sh "git push -u origin main"
