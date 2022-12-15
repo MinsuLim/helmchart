@@ -1,7 +1,5 @@
 pipeline {
 
- def GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
-
   agent { node { label 'ecs-agent-fargate' } } 
   stages { 
 
@@ -33,7 +31,7 @@ pipeline {
       //ssh -oStrictHostKeyChecking=no github.com
                 
               sh '''  
-                yq e -i '.image_name="${GIT_COMMIT_ID}"' values.yaml
+                yq e -i '.image_name="test2"' values.yaml
                 git add .
                 git commit -am "helm update"
               '''
