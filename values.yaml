@@ -69,4 +69,4 @@ autoscaling:
 nodeSelector: {}
 tolerations: []
 affinity: {}
-image_name: test
+image_name: test2
