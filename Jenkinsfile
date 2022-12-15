@@ -29,7 +29,7 @@ pipeline {
                 branch: 'main'
 
               sh '''  
-                yq e -i '.image_name="test"' value.yaml
+                yq e -i '.image_name="test"' values.yaml
                 git add .'
                 git commit -am "helm update"'
                 '''
