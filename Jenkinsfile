@@ -29,7 +29,7 @@ pipeline {
                 branch: 'main'
 
               sh '''  
-                ssh -oStrictHostKeyChecking=no host
+                ssh -oStrictHostKeyChecking=no github.com
                 yq e -i '.image_name="test"' values.yaml
                 git add .
                 git commit -am "helm update"
