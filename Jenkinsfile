@@ -28,14 +28,14 @@ pipeline {
                 url: 'https://github.com/MinsuLim/helmchart.git',
                 branch: 'main'
 
+      //ssh -T -oStrictHostKeyChecking=no git@github.com
+                
               sh '''  
-                //ssh -T -oStrictHostKeyChecking=no git@github.com
                 yq e -i '.image_name="test"' values.yaml
                 git add .
                 git commit -am "helm update"
               '''
             sshagent(credentials: ['neo-github']) {
-                //ssh -T -oStrictHostKeyChecking=no git@github.com
                 sh "git remote set-url origin git@github.com:MinsuLim/helmchart.git"
                 sh "git push -u origin main"
              }
