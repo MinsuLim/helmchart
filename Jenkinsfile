@@ -40,8 +40,7 @@ pipeline {
       //sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
                 
             sshagent(credentials: ['neo-github']) {
-                sh "mkdir -p /home/jenkins/.ssh"
-                sh "ssh-keyscan github.com >> /home/jenkins/.ssh/known_hosts"
+                sh "ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts"
                 sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
                 sh " "
                 sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
