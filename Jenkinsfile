@@ -31,7 +31,7 @@ pipeline {
       //ssh -oStrictHostKeyChecking=no github.com
                 
               sh '''  
-                yq e -i '.image_name="test2"' values.yaml
+                yq e -i '.image_name="test3"' values.yaml
                 git add .
                 git commit -am "helm update"
               '''
