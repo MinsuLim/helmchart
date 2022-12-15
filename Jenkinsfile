@@ -30,9 +30,9 @@ pipeline {
 
               sh '''  
                 yq e -i '.image_name="test"' values.yaml
-                git add .'
-                git commit -am "helm update"'
-                '''
+                git add .
+                git commit -am "helm update"
+              '''
             sshagent(credentials: ['neo-github']) {
                 sh "git remote set-url origin git@github.com:MinsuLim/helmchart.git"
                 sh "git push -u origin master"
