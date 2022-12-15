@@ -28,8 +28,9 @@ pipeline {
            sh "echo 'start deploy' "
         
            withCredentials([sshUserPrivateKey(credentialsId: 'neo-github', keyFileVariable: 'keyfile')]) {
-              sh '''
-                git clone https://github.com/MinsuLim/helmchart.git
+              sh "git clone https://github.com/MinsuLim/helmchart.git"
+            
+              sh '''  
                 yq e -i '.image_name="test"' value.yaml
                 git add .'
                 git commit -am "helm update"'
