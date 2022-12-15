@@ -1,4 +1,7 @@
-node{
+pipeline {
+ 
+  agent { node { label 'ecs-agent-fargate' } } 
+  stages { 
 
     //init stage 시작
     stage("init"){
@@ -24,4 +27,5 @@ node{
         '''
       }
     }
+ }
 }
