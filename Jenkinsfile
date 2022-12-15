@@ -1,3 +1,5 @@
+def GIT_COMMIT_ID = script.sh(returnStdout: true, script: "git rev-parse --verify HEAD").trim()
+
 pipeline {
  
   agent { node { label 'ecs-agent-fargate' } } 
@@ -31,7 +33,7 @@ pipeline {
       //ssh -oStrictHostKeyChecking=no github.com
                 
               sh '''  
-                yq e -i '.image_name="test"' values.yaml
+                yq e -i '.image_name="${GIT_COMMIT_ID}"' values.yaml
                 git add .
                 git commit -am "helm update"
               '''
@@ -69,7 +71,7 @@ pipeline {
 //               sh "git clone https://github.com/MinsuLim/helmchart.git"
             
 //               sh '''  
-//                 yq e -i '.image_name="test"' values.yaml
+//                 yq e -i '.image_name=""' values.yaml
 //                 git add .'
 //                 git commit -am "helm update"'
 //                 git push origin main
