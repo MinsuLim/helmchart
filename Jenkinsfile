@@ -27,7 +27,7 @@ pipeline {
         script {
            sh "echo 'start deploy' "
         
-           withCredentials([sshUserPrivateKey(credentialsId: 'neo-github')]) {
+           withCredentials([sshUserPrivateKey(credentialsId: 'neo-github', keyFileVariable: 'keyfile')]) {
               sh '''
                 git clone 
                 yq e -i '.image_name="test"' value.yaml
