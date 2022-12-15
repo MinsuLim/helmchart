@@ -41,6 +41,7 @@ pipeline {
                 
             sshagent(credentials: ['neo-github']) {
                 sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
+                sh " "
                 sh "git push -u origin main"
              }
         }
