@@ -29,7 +29,7 @@ pipeline {
         
            withCredentials([sshUserPrivateKey(credentialsId: 'neo-github', keyFileVariable: 'keyfile')]) {
               sh '''
-                git clone 
+                git clone https://github.com/MinsuLim/helmchart.git
                 yq e -i '.image_name="test"' value.yaml
                 git add .'
                 git commit -am "helm update"'
