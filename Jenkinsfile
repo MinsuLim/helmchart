@@ -24,30 +24,24 @@ pipeline {
     //deploy stage 시작
     stage("deploy"){
      steps {
-            git credentialsId: 'neo-github',
-                url: 'git@github.com:MinsuLim/helmchart.git',
-                branch: 'main'
-
-      //ssh -oStrictHostKeyChecking=no github.com
-                
-              sh '''  
-                yq e -i '.image_name="test3"' values.yaml
-                git add .
-                git commit -am "helm update"
-              '''
       
       //sh "git remote set-url origin git@github.com:MinsuLim/helmchart.git"
       //sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
       
       // deleted
-      //
-//                 sh " "
-//              sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
-                 
-//                 sh " "
+      // sh "git ls-remote -h git@github.com:MinsuLim/helmchart.git HEAD"
+
                 
       
             sshagent(credentials: ['neo-github']) {
+              git credentialsId: 'neo-github',
+                  url: 'git@github.com:MinsuLim/helmchart.git',
+                  branch: 'main'
+              sh '''  
+                yq e -i '.image_name="test4"' values.yaml
+                git add .
+                git commit -am "helm update"
+              '''              
                 sh "ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts"
                 sh "git config remote.origin.url git@github.com:MinsuLim/helmchart.git"
                 sh "git push -u origin main"
