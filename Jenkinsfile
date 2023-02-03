@@ -10,7 +10,16 @@ pipeline {
           sh "echo init"
           echo "${GIT_COMMIT}"
           echo "${env.GIT_COMMIT}"
-          
+          sh 'git name-rev --name-only HEAD > GIT_COMMIT'
+          sh 'cat GIT_COMMIT'
+          git_branch = readFile('GIT_COMMIT').trim()
+
+          checkout([$class: 'GitSCM',
+              branches: [[name: git_branch]],
+              doGenerateSubmoduleConfigurations: false,
+              gitTool: 'Default'
+            ])
+
         }
      }
     }
